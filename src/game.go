@@ -44,17 +44,17 @@ func printResultsAvg(holdScore, wins, gamesPlayed int) {
 func extractStrategy(strategyRange string) (int, int, error) {
 	rangeArray := strings.Split(strategyRange, "-")
 	if len(rangeArray) > 2 {
-		return 0, 0, fmt.Errorf("Expected the strategy in the format x-y eg. 1-100")
+		return 0, 0, fmt.Errorf("Expected the strategy in the format x-y eg. 1-100\n")
 	}
 
 	start, err := strconv.Atoi(rangeArray[0])
 	if err != nil || start < 1 || start > 100 {
-		return 0, 0, fmt.Errorf("Expected the strategy in the format x-y eg. 1-100")
+		return 0, 0, fmt.Errorf("Expected the strategy in the format x-y eg. 1-100\n")
 	}
 
 	end, err := strconv.Atoi(rangeArray[1])
 	if err != nil || end < 1 || end > 100 {
-		return 0, 0, fmt.Errorf("Expected the strategy in the format x-y eg. 1-100")
+		return 0, 0, fmt.Errorf("Expected the strategy in the format x-y eg. 1-100\n")
 	}
 
 	if start >= end {
@@ -93,12 +93,12 @@ func playStrategy(holdScore1, holdScore2 int) int {
 	return wins[player1.Name]
 }
 
-func playSingleStrategyAgainstSingleStrategy(holdScore1, holdScore2 int) {
+func PlaySingleStrategyAgainstSingleStrategy(holdScore1, holdScore2 int) {
 	wins := playStrategy(holdScore1, holdScore2)
 	printResults(holdScore1, holdScore2, wins)
 }
 
-func playSingleStrategyAgainstMultipleStrategy(holdScore1 int, holdScore2 string) {
+func PlaySingleStrategyAgainstMultipleStrategy(holdScore1 int, holdScore2 string) {
 	p2start, p2end, err := extractStrategy(holdScore2)
 	if err != nil {
 		fmt.Println(err)
@@ -116,7 +116,7 @@ func playSingleStrategyAgainstMultipleStrategy(holdScore1 int, holdScore2 string
 
 }
 
-func playMultipleStrategyAgainstMultipleStrategy(holdScore1, holdScore2 string) {
+func PlayMultipleStrategyAgainstMultipleStrategy(holdScore1, holdScore2 string) {
 	p1start, p1end, err := extractStrategy(holdScore1)
 	if err != nil {
 		fmt.Println(err)
