@@ -2,9 +2,8 @@ package src
 
 import "testing"
 
-var winningScore int = 100
-
 func TestPlayerDecision(t *testing.T) {
+	winningScore := 100
 	tests :=
 		[]struct {
 			name, expected string
